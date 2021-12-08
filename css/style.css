@@ -1,8 +1,94 @@
 body {
-    background-color:blue;
+    background-color: aliceblue;
+    text-align: center;
+}
+
+/*-------Heading-----*/
+#heading {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: cursive;
+}
+.line{
+    width:75%;
+    margin: 10px 15px 15px 155px;
+    border-radius: 5%;
+    border: 2px solid;
+}
+
+/* ---Game layout--- */
+#game-area{
+    background-color: #E6ECF0;
+    box-sizing: border-box;
+    border-radius: 30%;
+    width: 90%;
+    height: 65vh;
+    max-height: 830px;
+    max-width: 830px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
 }
 
 #smile {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 75%;
+    display: block;
+    block-size: 75%;
+}
+.btn {
+
+    padding-top: 1.5px;
+    border-radius:74%;
+    background-color: white;
+    border: 1.5px solid;
+    width: 175px;
+    height: 100px;
+    font-size: 1.9rem;
+    margin: 15px 50px 30px 15px;
+    transition: all 0.5s;
+}
+
+.btn-monday:active, .btn-monday:hover {
+    background-color: lightblue;
+    color: white;
+}
+.btn-monday:active, .btn-tuesday:hover {
+    background-color: lightblue;
+    color: white;
+}
+.btn-monday:active, .btn-wednesday:hover {
+    background-color: lightblue;
+    color: white;
+}
+.btn-monday:active, .btn-thursday:hover {
+    background-color: lightblue;
+    color: white;
+}
+.btn-monday:active, .btn-monday:hover {
+    background-color: lightblue;
+    color: white;
+}
+.btn-monday:active, .btn-friday:hover {
+    background-color: lightblue;
+    color: white;
+}
+.btn-monday:active, .btn-saturday:hover {
+    background-color: lightblue;
+    color: white;
+}
+.btn-monday:active, .btn-sunday:hover {
+    background-color: lightblue;
+    color: white;
+}
+
+/*--- Quote area---*/
+
+#quote-area{
+    background-color:lightblue;
+    display: block;
+    width: 830px;
+    height: 230px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+    font-family: cursive;
 }
