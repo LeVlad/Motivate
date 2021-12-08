@@ -9,12 +9,6 @@ body {
     font-size: 2.5rem;
     font-family: cursive;
 }
-.line{
-    width:75%;
-    margin: 10px 15px 15px 155px;
-    border-radius: 5%;
-    border: 2px solid;
-}
 
 /* ---Game layout--- */
 #game-area{
@@ -30,10 +24,7 @@ body {
     padding: 1%;
 }
 
-#smile {
-    display: block;
-    block-size: 75%;
-}
+
 .btn {
 
     padding-top: 1.5px;
@@ -96,75 +87,42 @@ body {
 /* --------- Media queries */
 
 @media (max-width: 414px) {
-    .controls-area {
+    #game-area {
+        width: 50%;
+        column-count: auto;
+    }
+
+    .btn{
+        margin: 20px;
+        padding: 20px;
+        border: 60% solid;
+        width: 50%;
+        height: 50%;
+        font-size: 1rem;
+            }
+  
+    #quote-area {
+        padding: 10%;
         width: 100%;
+        position: fixed;
     }
 
-    .btn--big {
-        margin: 0 10px;
-        padding: 5px;
-        border: 5px solid;
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-    }
-
-    .btn--big::after {
-        font-size: 0.6rem;
-        left: -0.7rem;
-    }
-
-    .question-area {
-        padding: 10% 0;
-        width: 100%;
-    }
-
-    .question-area span {
-        padding: 0;
-    }
-
-    .answer-message {
-        display: block;
-    }
-
-    #answer-box {
-        display: block;
-        margin: 0 auto;
-    }
-    .btn--gray {
-        margin-top: 0;
-    }
-
-    .score-area {
-        width: 100%;
-    }
-
-    .scores {
-        margin: 0.5em auto;
-        display: block;
-        padding: 5px;
-    }
-
-    .heading {
-        font-size: 2rem;
+    #heading {
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 320px) {
-    .game-area {
-        height: 70vh;
+#game-area {
+        height: 150vh;
+        
     }
 
-    .controls-area {
-        width: 75%;
-        margin: 10px auto;
+   .btn{
+        margin: auto;
+        font-size :1rem;;
+        column-count: 1;
     }
-
-    .btn--big {
-        margin: 10px 10px;
-    }
-    .question-area {
-        padding: 10px 0;
-    }
+    
 
 }
