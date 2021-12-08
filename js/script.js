@@ -1,3 +1,4 @@
-function createRandomNumber()
-function selectRandomQuote()
+function selectRandomQuote(
+    document.addEventListener("click", displayRandomSelectedQuote)
+)
 function displayRandomSelectedQuote()
