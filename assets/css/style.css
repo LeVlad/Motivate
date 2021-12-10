@@ -80,55 +80,58 @@ body {
 
 /*--- Quote area---*/
 
-.quote_area{
+.quote_box{
     background-color:lightblue;
     display: block;
     width: 830px;
     height: 230px;
     margin-left: auto;
-    margin-right: auto;
-    padding: 1%;
+    margin-right:auto;
+    padding: 1px;
     font-family: cursive;
 }
 
 /* --------- Media queries */
 
 @media (max-width: 414px) {
-    #game_area {
-        width: 50%;
+    .game_area {
+        width: 40%;
         column-count: auto;
+        
     }
 
     .btn{
-        margin: 20px;
-        padding: 20px;
-        border: 60% solid;
-        width: 50%;
-        height: 50%;
-        font-size: 1rem;
+        width: 100%;
+        padding: 1%;
+        border: 10% solid;
+        height: 20%;
+        font-size: 30px;
             }
   
-    #quote_area {
+    #quote_box {
         padding: 10%;
-        width: 100%;
-        position: fixed;
+        width: 30px;
+        
     }
 
     .heading {
-        font-size: 1rem;
+        font-size: 30px;
     }
 }
 
 @media (max-width: 320px) {
 .game_area {
-        height: 150vh;
+        height: 50%;
+        font-size:30px;
         
     }
 
    .btn{
         margin: auto;
-        font-size :1rem;;
-        column-count: 1;
+        font-size :30px;
+        column-count: auto;
+        width:50%;
+       
     }
     
 

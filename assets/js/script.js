@@ -1,19 +1,19 @@
-const quoteArea = document.getElementByClassName("quote-box")
+const quoteArea = document.getElementByClassName("quote-box");
 const buttons = document.getElementsByTagName("button");
-const quote = 
+const quoteHead = document.getElementById("quoteHead");
     
     for (let button of buttons){
        button.addEventListener("click", function(){
-           if(this.getAttribute("data-type") === "submit"){
-               alert("you clicked submit!");
-           } else {
-               let dayType = this.getAttribute("data-type");
-               alert(`you clicked on ${dayType}`);
-           }
+           let dayType =this.getAttribute("data-day");
+           let quoteIndex = Math.floor(Math.random() * 30);
+           let imageIndex = Math.floor(Math.random() * 14);
+        displayQuote(dayType, getRandomQuote(quoteIndex), getRandomImage(quoteIndex))
+                  
        })
     
 
-function getRandomQuote(){
+function getRandomQuote(index){
+
     let quotes = ["Be positive. Be true. Be kind.Roy T. Bennett",
     "You cannot have a positive life and a negative mind.Joyce Meyer",
     "If you are positive, you'll see opportunities instead of obstacles.Widad Akrawi",
@@ -37,9 +37,23 @@ function getRandomQuote(){
           "For every reason it's not possible, there are hundreds of people who have faced the same circumstances and succeeded. Jack Canfield",
           "We may encounter many defeats but we must not be defeated.  Maya Angelou",
            "You only live once, but if you do it right, once is enough. Mae West", "In three words I can sum up everything I've learned about life: it goes on. Robert Frost","Life is what happens to us while we are making other plans. Allen Saunders","I may not have gone where I intended to go, but I think I have ended up where I needed to be.  Douglas Adams","Life isn't about finding yourself. Life is about creating yourself.― George Bernard Shaw","Life is like riding a bicycle. To keep your balance, you must keep moving.― Albert Einstein","Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less.  Marie Curie","You are the sum total of everything you've ever seen, heard, eaten, smelled, been told, forgot, it's all there. Everything influences each of us, and because of that I try to make sure that my experiences are positive.― Maya Angelou","The best way to get started is to quit talking and begin doing. Walt Disney","Leaders never use the word failure. They look upon setbacks as learning experiences.  Brian Tracy", "There are no limits to what you can accomplish, except the limits you place on your own thinking. Brian Tracy", "Someone is sitting in the shade today because someone planted a tree a long time ago.  Warren Buffet","The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty.  Winston Churchill","You learn more from failure than from success. Don't let it stop you. Failure builds character.  Unknown","If you are working on something that you really care about, you don't have to be pushed. The vision pulls you.  Steve Jobs", "Entrepreneurs are great at dealing with uncertainty and also very good at minimizing risk. That's the classic entrepreneur.  Mohnish Pabrai", "The man who has confidence in himself gains the confidence of others. Hasidic Proverb","What you lack in talent can be made up with desire, hustle and giving 110% all the time.  Don Zimmer","Fake it until you make it! Act as if you had all the confidence you require until it becomes your reality. Brian Tracy","I think goals should never be easy, they should force you to work, even if they are uncomfortable at the time.  Michael Phelps","The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. Steve Jobs","Leaders think and talk about the solutions. Followers think and talk about the problems.  Brian Tracy"];
-   };
-   }
    
+           return quotes[Index];
+   
+};
+
+    }
+function getRandomImage() {
+    let images=["Happines","Hope","Impact","Believe"]
+    return images[index]
+
 }
+function displayQuote(){
+    if (dayType === "submit") {
+        alert("you've clicked submit!");
+    } else {
+        alert(`Today is not${dayType}`);
+    }
+
 
 }
