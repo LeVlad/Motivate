@@ -38,3 +38,10 @@ FontAwesome was used to add symbols to he week days
 
 
 
+## Deployment ##
+
+The site was deployed to GitHub pages. The steps to deploy are as follows:
+
+In the GitHub repository, navigate to the Settings tab In the Pages section, go to select branch drop-down menu, select Main Once the Main branch has been selected, a link to the site is provided
+
+The live link can be found here -https://levlad.github.io/Motivate/
