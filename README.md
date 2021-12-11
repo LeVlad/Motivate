@@ -1,5 +1,5 @@
 # Motivate! #
-[Responsive Design](https://user-images.githubusercontent.com/88729876/145661528-560c2c85-954f-42a4-b7d8-1450f02e74a2.jpg)
+(https://user-images.githubusercontent.com/88729876/145661528-560c2c85-954f-42a4-b7d8-1450f02e74a2.jpg)
 
 ## Description ##
 
