@@ -112,10 +112,13 @@ body {
   }
   
   @media only screen and (max-width: 320px) {
-    .game_area, .btn {
+    .btn {
       height: 95%;
       padding-top: 10px;
       width:50%;
+    }
+    .game_area{
+        display:none;
     }
   }
 
