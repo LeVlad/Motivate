@@ -2,6 +2,8 @@
 
 A simple site designed for simplicity and positive information.
 
+## Responsive Design ## https://user-images.githubusercontent.com/88729876/145661741-82e34020-dcbe-42b7-80c7-7c0eeba3b5ab.jpg
+
 ## Description ##
 
 ### Motivate.me is meant to be a simple "pick-me" up site that can help anyone who feels down or just not quite motivated.
