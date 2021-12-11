@@ -62,7 +62,7 @@ function displayQuote(day, quote, image){
     Swal.fire({
         title: day,
         text: quote,
-        imageUrl: `assets/images/${image}.jpg`,
+        imageUrl: `assets/images/${image}.png`,
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: 'Be positive',
