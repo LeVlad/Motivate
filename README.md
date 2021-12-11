@@ -70,8 +70,9 @@ A simple website that can help when feeling a bit low or not-wining as they say.
 # Credits #
 
 1. Richard Wells for his excellent advice, help and support.
-2. My family for putting up with my course.
-3. Websearches on StockOverflow, Google, MND Webdocs.
+2. Anna Greaves for her project off of which I borrowed some code lines and I was inspired, "Love Maths".
+3. My family for putting up with my course.
+4. Websearches on StockOverflow, Google, MND Webdocs.
 
 ## Resources ##
 
