@@ -49,7 +49,7 @@ function getRandomQuote(index){
    * @returns string  
    * */  
 function getRandomImage(index) {
-    let images=[`Happiness`,`Hope`,`Impact`,`Believe`,`Focus`,`Take action`, `Positive`,`Yes`,`Net-Positive`,`NewDay`,`Smile`,`ThinkBig`,`Stay positive`,`PositiveCan`];
+    let images=[`Hope`,`Impact`,`Believe`,`Focus`,`Take action`, `Positive`,`Yes`,`Net-Positive`,`NewDay`,`Smile`,`ThinkBig`,`Stay positive`,`PositiveCan`];
     return images[index];
 /**
    * Displays quote to user
