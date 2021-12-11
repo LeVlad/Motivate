@@ -26,6 +26,8 @@ FontAwesome was used to add symbols to he week days
 
 ## Validators ##
 
+
+
 # NuHTML #
 
 

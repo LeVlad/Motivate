@@ -6,7 +6,7 @@ const buttons = document.getElementsByTagName("button");
        button.addEventListener("click", function(){
            let dayType =this.getAttribute("data-day");
            let quoteIndex = Math.floor(Math.random() * 30);
-           let imageIndex = Math.floor(Math.random() * 14);
+           let imageIndex = Math.floor(Math.random() * 12);
         displayQuote(dayType,getRandomQuote(quoteIndex),getRandomImage(imageIndex));
          });
 }
@@ -49,7 +49,7 @@ function getRandomQuote(index){
    * @returns string  
    * */  
 function getRandomImage(index) {
-    let images=[`Hope`,`Impact`,`Believe`,`Focus`,`Take action`, `Positive`,`Yes`,`Net-Positive`,`NewDay`,`Smile`,`ThinkBig`,`Stay positive`,`PositiveCan`];
+    let images=[`Hope`,`Impact`,`Believe`,`Focus`,`Take action`,`Positive`,`Yes`,`Net-Positive`,`NewDay`,`Smile`,`ThinkBig`,`Stay positive`,`PositiveCan`];
     return images[index];
 /**
    * Displays quote to user
