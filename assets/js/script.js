@@ -58,14 +58,14 @@ function getRandomImage(index) {
    * @param {string} image
    * */  
 }
-function displayQuote(_day, _quote, _image){
+function displayQuote(day, quote, image){
     Swal.fire({
-        title: 'day',
-        text: 'quote',
-        imageUrl: '/assets/images/${image}.jpg',
+        title: day,
+        text: quote,
+        imageUrl: `assets/images/${image}.jpg`,
         imageWidth: 400,
         imageHeight: 200,
-        imageAlt: 'Visualisation',
+        imageAlt: 'Be positive',
       });
 
 
