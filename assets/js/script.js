@@ -49,7 +49,7 @@ function getRandomQuote(index){
    * @returns string  
    * */  
 function getRandomImage(index) {
-    let images=["Happiness","Hope","Impact","Believe","Focus","Take action", "Positive","Yes"];
+    let images=['Happiness','Hope','Impact','Believe','Focus','Take action', 'Positive','Yes'];
     return images[index];
 /**
    * Displays quote to user
@@ -62,7 +62,7 @@ function displayQuote(day, quote, image){
     Swal.fire({
         title: day,
         text: quote,
-        imageUrl: `assets/images/${image}.png`,
+        imageUrl: `/assets/images/${image}.png`,
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: 'Be positive',
