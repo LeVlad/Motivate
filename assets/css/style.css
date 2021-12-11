@@ -93,46 +93,28 @@ body {
 
 /* --------- Media queries */
 
-@media (max-width: 414px) {
-    .game_area {
-        width: 40%;
-        column-count: auto;
-        
+
+@media only screen and (max-width: 780px) {
+    .game_area,.btn {
+      height: 100%;
+      padding-top: 20px;
+      width:60%;
     }
 
-    .btn{
-        width: 100%;
-        padding: 1%;
-        border: 10% solid;
-        height: 20%;
-        font-size: 30px;
-            }
+  }
   
-    #quote_box {
-        padding: 10%;
-        width: 30px;
-        
+  @media only screen and (max-width: 375px) {
+    .game_area, .btn {
+      height: 55%;
+      padding-top: 0px;
+      width: 50%;
     }
-
-    .heading {
-        font-size: 30px;
+  }
+  
+  @media only screen and (max-width: 320px) {
+    .game_area, .btn {
+      height: 95%;
+      padding-top: 10px;
+      width:50%;
     }
-}
-
-@media (max-width: 320px) {
-.game_area {
-        height: 50%;
-        font-size:30px;
-        
-    }
-
-   .btn{
-        margin: auto;
-        font-size :30px;
-        column-count: auto;
-        width:50%;
-       
-    }
-    
-
-}
+  }
