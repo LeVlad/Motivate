@@ -1,6 +1,6 @@
 const quoteArea = document.getElementById("quote-box");
 const buttons = document.getElementsByTagName("button");
-const quoteHead = document.getElementById("quoteHead");
+
     
     for (let button of buttons){
        button.addEventListener("click", function(){
