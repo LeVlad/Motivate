@@ -4,7 +4,8 @@ A simple site designed for simplicity and positive information.
 
 ## Responsive Design ##
 
- https://user-images.githubusercontent.com/88729876/145661741-82e34020-dcbe-42b7-80c7-7c0eeba3b5ab.jpg
+![MotivateResponsive](https://user-images.githubusercontent.com/88729876/145673031-340fa231-b612-4257-b402-266dcc439be5.jpeg)
+
 
 ## Description ##
 
@@ -29,14 +30,17 @@ FontAwesome was used to add symbols to he week days
 
 
 # NuHTML #
+![NuHTML Check](https://user-images.githubusercontent.com/88729876/145673034-fabe8d25-f197-41a8-ac3d-3c0a1ceca992.jpg)
 
 
 
 # W3C CSS #
 
+![W3C CSS Validation](https://user-images.githubusercontent.com/88729876/145673172-9eaaff0c-607a-468a-9b4e-e4214b95a147.jpg)
 
 
 # Lighthouse #
+![LightHouse report](https://user-images.githubusercontent.com/88729876/145673212-fa279df5-ac73-43e6-8510-ad9f4c657123.jpg)
 
 
 
@@ -48,7 +52,19 @@ In the GitHub repository, navigate to the Settings tab In the Pages section, go 
 
 The live link can be found here -https://levlad.github.io/Motivate/
 
+## Errors ##
 
+ I came across an error that took more than its share of time spent trying to find out what went wrong :
+![Reccuring error](https://user-images.githubusercontent.com/88729876/145673243-9ae8a8fe-bb07-405b-8a5c-e331ee01428b.jpg)
+
+In the end I found the answer on a forum, it was the "." before the "/" for both the script.js file and the sweetalert function, they were missing.
+
+## Final Result ##
+
+A simple website that can help when feeling a bit low or not-wining as they say.
+
+![End Result](https://user-images.githubusercontent.com/88729876/145673315-73adff21-982f-4bf8-b5c2-445c752f46ce.jpg)
+![End Result2](https://user-images.githubusercontent.com/88729876/145673319-f0d44f1f-8751-4fa2-be88-e5215dfa57bd.jpg)
 
 
 # Credits #
