@@ -12,16 +12,19 @@ body {
 
 /* ---Game layout--- */
 .game_area{
-    background-color: #E6ECF0;
+    position:relative;
+    background-color: #37f378;
     box-sizing: border-box;
-    border-radius: 30%;
+    border-radius: 50%;
     width: 90%;
     height: 65vh;
     max-height: 830px;
     max-width: 830px;
     margin-left: auto;
     margin-right: auto;
-    padding: 1%;
+    padding: 5%;
+    border-width: 5rem;
+    
 }
 
 
@@ -48,49 +51,49 @@ body {
     
 }
 .btn-monday:active, .btn-monday:hover {
-    background-color: #52f182;
+    background-color: #6cf896;
     color: white;
 }
 .btn-monday:active, .btn-tuesday:hover {
-    background-color: lightblue;
+    background-color: #6cf896;
     color: white;
 }
 .btn-monday:active, .btn-wednesday:hover {
-    background-color: rgb(202, 233, 194);
+    background-color: #6cf896;
     color: white;
 }
 .btn-monday:active, .btn-thursday:hover {
-    background-color: rgb(121, 210, 240);
+    background-color: #6cf896;
     color: white;
 }
 .btn-monday:active, .btn-monday:hover {
-    background-color: rgb(85, 207, 181);
+    background-color: #6cf896;
     color: white;
 }
 .btn-monday:active, .btn-friday:hover {
-    background-color: rgb(52, 230, 120);
+    background-color: #6cf896;
     color: white;
 }
 .btn-monday:active, .btn-saturday:hover {
-    background-color: rgb(9, 165, 218);
+    background-color: #6cf896;
     color: white;
 }
 .btn-monday:active, .btn-sunday:hover {
-    background-color: rgb(42, 240, 69);
+    background-color: #6cf896;
     color: white;
 }
 
 /*--- Quote area---*/
 
 .quote_box{
-    background-color:lightblue;
+    
     display: block;
-    width: 830px;
     height: 230px;
     margin-left: auto;
     margin-right:auto;
     padding: 1px;
     font-family: cursive;
+    
 }
 
 /* --------- Media queries */
