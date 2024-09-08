@@ -1,8 +1,14 @@
 body {
-    background-color: aliceblue;
+    background-color:rgba(154 223 144);
     text-align: center;
 }
-
+#instructions{
+    background-color: #6cf8f6;
+    display: block;
+    width:auto;
+    align-self: left;
+    align-content: flex-start;
+}
 /*-------Heading-----*/
 .heading {
     text-align: center;
@@ -13,16 +19,15 @@ body {
 /* ---Game layout--- */
 .game_area{
     position:relative;
-    background-color: #37f378;
+    background-color: rgba(154 223 144);
     box-sizing: border-box;
-    border-radius: 50%;
+    border-radius: 35%;
     width: 90%;
     height: 65vh;
     max-height: 830px;
     max-width: 830px;
     margin-left: auto;
     margin-right: auto;
-    padding: 5%;
     border-width: 5rem;
     
 }
@@ -88,7 +93,7 @@ body {
 .quote_box{
     
     display: block;
-    height: 230px;
+    height: 280px;
     margin-left: auto;
     margin-right:auto;
     padding: 1px;
