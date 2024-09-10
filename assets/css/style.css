@@ -7,15 +7,17 @@
 }
 
 body {
-    background: linear-gradient(to bottom right, #a8e063, #56ab2f);
+    background: linear-gradient(to bottom right, rgb(19, 214, 19), #1e9cd6);
     text-align: center;
 }
 
 /*-----------Instructions----------*/
 
 #instructions {
-    font-size: x-large;
-    color: aqua;
+    font-family:var(--btn-height);
+    color: rgb(15, 20, 27);
+    font-weight: 200;
+    font-size:125%;
 }
 
 /*-------Heading-----*/
@@ -30,28 +32,29 @@ body {
 
 .game_area {
     position: relative;
-    background-color: var(--main-bg-color);
+    background-color: transparent;
     box-sizing: border-box;
-    border-radius: 35%;
+    border-radius: 36%;
     width: 90%;
     height: 65vh;
     max-height: 830px;
     max-width: 830px;
     margin: 0 auto;
     border-width: 5rem;
+    border-bottom: #56ab2f;
 }
 
 .btn {
     padding-top: 1.5rem;
     border-radius: 77%;
-    background-color: white;
-    border: 1.5rem solid;
+    background-color: rgb(141, 250, 114);
+    border: 0.5rem solid;
     width: var(--btn-width);
     height: var(--btn-height);
-    font-size: 1.9rem;
+    font-size: 1.4rem;
     margin: 1rem;
     transition: all 0.5s;
-    box-shadow: 10px 10px;
+    box-shadow: 5px 5px;
 }
 
 .btn::after {
