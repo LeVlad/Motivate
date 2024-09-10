@@ -1,135 +1,106 @@
+:root {
+    --main-bg-color: rgba(154, 223, 144, 1);
+    --btn-hover-color: #6cf896;
+    --btn-width: 175px;
+    --btn-height: 100px;
+    --font-family: cursive;
+}
+
 body {
-    background-color:rgba(154 223 144);
+    background: linear-gradient(to bottom right, #a8e063, #56ab2f);
     text-align: center;
 }
+
 /*-----------Instructions----------*/
 
-#instructions{
+#instructions {
     font-size: x-large;
+    color: aqua;
 }
+
 /*-------Heading-----*/
-.heading {
+
+.heading, .quote_box {
     text-align: center;
     font-size: 2.5rem;
-    font-family: cursive;
+    font-family: var(--font-family);
 }
 
 /* ---Game layout--- */
-.game_area{
-    position:relative;
-    background-color: rgba(154 223 144);
+
+.game_area {
+    position: relative;
+    background-color: var(--main-bg-color);
     box-sizing: border-box;
     border-radius: 35%;
     width: 90%;
     height: 65vh;
     max-height: 830px;
     max-width: 830px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     border-width: 5rem;
-    
 }
-
 
 .btn {
-
-    padding-top: 1.5px;
-    border-radius:74%;
+    padding-top: 1.5rem;
+    border-radius: 77%;
     background-color: white;
-    border: 1.5px solid;
-    width: 175px;
-    height: 100px;
+    border: 1.5rem solid;
+    width: var(--btn-width);
+    height: var(--btn-height);
     font-size: 1.9rem;
-    margin: 1rem 1rem 1rem 1rem;
+    margin: 1rem;
     transition: all 0.5s;
     box-shadow: 10px 10px;
-    text-align: center;
 }
 
-.btn::after{
+.btn::after {
     content: attr(data-type);
-    font-size:1rem;
-    position:relative;
-    
-    
+    font-size: 1rem;
+    position: relative;
 }
-.btn-monday:active, .btn-monday:hover {
-    background-color: #6cf896;
-    color: white;
-}
-.btn-monday:active, .btn-tuesday:hover {
-    background-color: #6cf896;
-    color: white;
-}
-.btn-monday:active, .btn-wednesday:hover {
-    background-color: #6cf896;
-    color: white;
-}
-.btn-monday:active, .btn-thursday:hover {
-    background-color: #6cf896;
-    color: white;
-}
-.btn-monday:active, .btn-monday:hover {
-    background-color: #6cf896;
-    color: white;
-}
-.btn-monday:active, .btn-friday:hover {
-    background-color: #6cf896;
-    color: white;
-}
-.btn-monday:active, .btn-saturday:hover {
-    background-color: #6cf896;
-    color: white;
-}
-.btn-monday:active, .btn-sunday:hover {
-    background-color: #6cf896;
+
+.btn:active, .btn:hover {
+    background-color: var(--btn-hover-color);
     color: white;
 }
 
 /*--- Quote area---*/
 
-.quote_box{
-    
+.quote_box {
     display: block;
     height: 280px;
-    margin-left: auto;
-    margin-right:auto;
+    margin: 0 auto;
     padding: 1px;
-    font-family: cursive;
-    
 }
 
 /* --------- Media queries */
 
-
 @media only screen and (max-width: 780px) {
-    .game_area,.btn {
-      height: 100%;
-      padding-top: 20px;
-      width:60%;
-    }
-
-  }
-  
-  @media only screen and (max-width: 375px) {
     .game_area, .btn {
-      height: 55%;
-      padding-top: 0px;
-      width: 50%;
+        height: auto;
+        width: 80%;
     }
-  }
-  
-  @media only screen and (max-width: 320px) {
-    .game_area,.btn {
-      height: 95%;
-      padding-top: 10px;
-      width:50%;
+}
+
+@media only screen and (max-width: 375px) {
+    .game_area, .btn {
+        height: 55%;
+        padding-top: 0;
+        width: 70%;
     }
-    
+}
 
-  /*--- Footer ---*/
+@media only screen and (max-width: 320px) {
+    .game_area, .btn {
+        height: 95%;
+        padding-top: 10px;
+        width: 50%;
+    }
+}
 
-  #smile {
-      font-size: larger;
-  }
+/*--- Footer ---*/
+
+#smile {
+    font-size: larger;
 }

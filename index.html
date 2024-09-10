@@ -1,71 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/favicon/favicon-16x16.png"/>
-  
+    <meta name="description" content="Motivate.me - Get a motivational quote based on your day of the week.">
     <title>Motivate</title>
-
-    
-
 </head>
 <body>
+    <h1 class="heading">Motivate.me</h1>
 
-      <h1 class="heading">Motivate.me</h1>
-    
-       <div class="game_area">
-       <button data-day="Monday" class= "btn btn-active btn-monday">
-            <i class="fas fa-coffee">Monday</i>
-       </button>
-       <button data-day="Tuesday" class= "btn btn-active btn-tuesday">
-           <i class="fas fa-laptop-house">Tuesday</i>
+    <section class="game_area">
+        <button data-day="Monday" class="btn btn-monday">
+            <i class="fas fa-coffee" aria-label="Monday Coffee"></i> Monday
         </button>
-       <button data-day="Wednesday" class= "btn btn-active btn-wednesday">
-           <i class="fas fa-building">Wednesday</i></button>
-       <button data-day="Thursday" class= "btn btn-active btn-thursday">
-           <i class="fas fa-network-wired">Thursday</i></button>
-       <button data-day="Friday" class= "btn btn-active btn-friday">
-           <i class="fas fa-code-branch">Friday</i>
-       </button>
-       <button data-day="Saturday" class= "btn btn-active btn-saturday">
-           <i class="fas fa-wine-bottle">Saturday</i></button>
-       <button data-day="Sunday" class= "btn btn-active btn-sunday">
-           <i class="fas fa-beer">Sunday</i></button>
-       
-    </div>
-    <div class="description">
+        <button data-day="Tuesday" class="btn btn-tuesday">
+            <i class="fas fa-laptop-house" aria-label="Tuesday Laptop"></i> Tuesday
+        </button>
+        <button data-day="Wednesday" class="btn btn-wednesday">
+            <i class="fas fa-building" aria-label="Wednesday Building"></i> Wednesday
+        </button>
+        <button data-day="Thursday" class="btn btn-thursday">
+            <i class="fas fa-network-wired" aria-label="Thursday Network"></i> Thursday
+        </button>
+        <button data-day="Friday" class="btn btn-friday">
+            <i class="fas fa-code-branch" aria-label="Friday Code"></i> Friday
+        </button>
+        <button data-day="Saturday" class="btn btn-saturday">
+            <i class="fas fa-wine-bottle" aria-label="Saturday Wine"></i> Saturday
+        </button>
+        <button data-day="Sunday" class="btn btn-sunday">
+            <i class="fas fa-beer" aria-label="Sunday Beer"></i> Sunday
+        </button>
+    </section>
+
+    <article class="description">
         <h2>Instructions</h2>
-    <div class="instructions">
-            <p id="instructions">Welcome to Motivate.me!
-            Simply press the icons based on whatever day it is or whatever day you like and see what the hidden message is that can improve your day.</p>
-    </div>
-    
-</div>
+        <p id="instructions">Welcome to Motivate.me! Simply press the icons based on whatever day it is or whatever day you like and see what the hidden message is that can improve your day.</p>
+    </article>
 
-    <div class="quote_box">
+    <aside class="quote_box">
         <p class="random_quote"></p>
-        </div>
-    <div></div>
-    <!-- Font Awesome Scritpt-->
-<script src="https://kit.fontawesome.com/394a00d2fc.js" crossorigin="anonymous"></script>
+    </aside>
 
-<!--JS-->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="./assets/js/script.js"></script>
-      <!-- Footer-->
-<footer>
-    <p>
-        <a href="https://jigsaw.w3.org/css-validator/check/referer">
-            <img style="border:0;width:88px;height:31px"
-                src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-                alt="Valid CSS!" />
-        </a>
-    </p>
-         <span id="smile"><i class="far fa-smile-wink"></i></span>
- </footer> 
+    <!-- Font Awesome Script -->
+    <script src="https://kit.fontawesome.com/394a00d2fc.js" crossorigin="anonymous" async></script>
+    <!-- SweetAlert2 JS -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <!-- Custom JS -->
+    <script src="assets/js/script.js" defer></script>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            <a href="https://jigsaw.w3.org/css-validator/check/referer">
+                <img class="css-validator" src="https://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!" />
+            </a>
+        </p>
+        <p id="smile">
+            <i class="far fa-smile-wink"></i>
+        </p>
+        <p>&copy; 2024 Motivate.me</p>
+    </footer>
 </body>
-
 </html>
