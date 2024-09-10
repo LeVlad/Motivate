@@ -2,12 +2,10 @@ body {
     background-color:rgba(154 223 144);
     text-align: center;
 }
+/*-----------Instructions----------*/
+
 #instructions{
-    background-color: #6cf8f6;
-    display: block;
-    width:auto;
-    align-self: left;
-    align-content: flex-start;
+    font-size: x-large;
 }
 /*-------Heading-----*/
 .heading {
