@@ -14,15 +14,8 @@ body {
 /*-----------Instructions----------*/
 
 #instructions {
-<<<<<<< HEAD
     font-size: x-large;
     color: #3d5e2e;
-=======
-    font-family:var(--btn-height);
-    color: rgb(15, 20, 27);
-    font-weight: 200;
-    font-size:125%;
->>>>>>> refs/remotes/origin/main
 }
 
 /*-------Heading-----*/
@@ -114,18 +107,7 @@ body {
 
 /* --------- Media queries */
 
-<<<<<<< HEAD
 @media only screen and (max-width: 375px) {
-=======
-@media only screen and (max-width: 780px) {
-    .game_area, .btn {
-        height: auto;
-        width: 80%;
-    }
-}
-
-@media only screen and (max-width: 320px) {
->>>>>>> refs/remotes/origin/main
     .game_area, .btn {
         height: 55%;
         padding-top: 0;
