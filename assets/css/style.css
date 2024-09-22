@@ -37,22 +37,18 @@ body {
 
 .game_area {
     position: relative;
-<<<<<<< HEAD
     background:linear-gradient(to bottom left, #56ab2f, #a8e063);
     box-sizing: border-box;
     border-radius: 40%;
-=======
     background-color: transparent;
     box-sizing: border-box;
     border-radius: 36%;
->>>>>>> refs/remotes/origin/main
     width: 90%;
     height: 65vh;
     max-height: 830px;
     max-width: 830px;
     margin: 0 auto;
     border-width: 5rem;
-<<<<<<< HEAD
     padding-top: 125px;
 
 }
@@ -70,7 +66,6 @@ body {
     box-shadow: 10px 10px;
     box-sizing: border-box;
     display: inline-block;
-=======
     border-bottom: #56ab2f;
 }
 
@@ -85,7 +80,6 @@ body {
     margin: 1rem;
     transition: all 0.5s;
     box-shadow: 5px 5px;
->>>>>>> refs/remotes/origin/main
 }
 
 .btn::after {
