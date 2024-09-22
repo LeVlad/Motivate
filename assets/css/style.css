@@ -7,7 +7,7 @@
 }
 
 body {
-    background: linear-gradient(to bottom right, rgb(19, 214, 19), #1e9cd6);
+    background: linear-gradient(to bottom right, rgb(19, 214, 19), #4ab4e6);
     text-align: center;
 }
 
@@ -15,7 +15,7 @@ body {
 
 #instructions {
     font-size: x-large;
-    color: #3d5e2e;
+    color: #21271e;
 }
 
 /*-------Heading-----*/
@@ -30,12 +30,12 @@ body {
 
 .game_area {
     position: relative;
-    background:linear-gradient(to bottom left, #56ab2f, #a8e063);
+    background: linear-gradient(to bottom right, rgb(19, 214, 19), #4ab4e6);
     box-sizing: border-box;
     border-radius: 40%;
     background-color: transparent;
     box-sizing: border-box;
-    border-radius: 36%;
+    border-radius: 40%;
     width: 90%;
     height: 65vh;
     max-height: 830px;
@@ -50,7 +50,7 @@ body {
     
     border-radius: 25%;
     background-color: white;
-    border: 5px seagreen;
+    border: 1px seagreen;
     width: 10.5%;
     height: 20.5%;
     font-size: medium;
@@ -59,7 +59,7 @@ body {
     box-shadow: 10px 10px;
     box-sizing: border-box;
     display: inline-block;
-    border-bottom: #56ab2f;
+    
 }
 
 .btn {
