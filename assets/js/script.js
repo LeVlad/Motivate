@@ -70,3 +70,4 @@ function displayQuote(day, quote, image){
 
 
 }
+

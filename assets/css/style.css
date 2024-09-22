@@ -7,15 +7,22 @@
 }
 
 body {
-    background: linear-gradient(to bottom right, #a8e063, #56ab2f);
+    background: linear-gradient(to bottom right, rgb(19, 214, 19), #1e9cd6);
     text-align: center;
 }
 
 /*-----------Instructions----------*/
 
 #instructions {
+<<<<<<< HEAD
     font-size: x-large;
     color: #3d5e2e;
+=======
+    font-family:var(--btn-height);
+    color: rgb(15, 20, 27);
+    font-weight: 200;
+    font-size:125%;
+>>>>>>> refs/remotes/origin/main
 }
 
 /*-------Heading-----*/
@@ -30,15 +37,22 @@ body {
 
 .game_area {
     position: relative;
+<<<<<<< HEAD
     background:linear-gradient(to bottom left, #56ab2f, #a8e063);
     box-sizing: border-box;
     border-radius: 40%;
+=======
+    background-color: transparent;
+    box-sizing: border-box;
+    border-radius: 36%;
+>>>>>>> refs/remotes/origin/main
     width: 90%;
     height: 65vh;
     max-height: 830px;
     max-width: 830px;
     margin: 0 auto;
     border-width: 5rem;
+<<<<<<< HEAD
     padding-top: 125px;
 
 }
@@ -56,6 +70,22 @@ body {
     box-shadow: 10px 10px;
     box-sizing: border-box;
     display: inline-block;
+=======
+    border-bottom: #56ab2f;
+}
+
+.btn {
+    padding-top: 1.5rem;
+    border-radius: 77%;
+    background-color: rgb(141, 250, 114);
+    border: 0.5rem solid;
+    width: var(--btn-width);
+    height: var(--btn-height);
+    font-size: 1.4rem;
+    margin: 1rem;
+    transition: all 0.5s;
+    box-shadow: 5px 5px;
+>>>>>>> refs/remotes/origin/main
 }
 
 .btn::after {
@@ -90,7 +120,18 @@ body {
 
 /* --------- Media queries */
 
+<<<<<<< HEAD
 @media only screen and (max-width: 375px) {
+=======
+@media only screen and (max-width: 780px) {
+    .game_area, .btn {
+        height: auto;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+>>>>>>> refs/remotes/origin/main
     .game_area, .btn {
         height: 55%;
         padding-top: 0;
@@ -101,7 +142,7 @@ body {
 @media only screen and (max-width: 320px) {
     .game_area, .btn {
         height: 95%;
-        padding-top: 10px;
+        padding-top: 10%;
         width: 50%;
     }
 }
