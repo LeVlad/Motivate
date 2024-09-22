@@ -1,9 +1,9 @@
 :root {
     --main-bg-color: rgba(154, 223, 144, 1);
     --btn-hover-color: #6cf896;
-    --btn-width: 175px;
+    --btn-width: 75px;
     --btn-height: 100px;
-    --font-family: cursive;
+    --font-family: lato;
 }
 
 body {
@@ -15,14 +15,14 @@ body {
 
 #instructions {
     font-size: x-large;
-    color: aqua;
+    color: #3d5e2e;
 }
 
 /*-------Heading-----*/
 
 .heading, .quote_box {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: xx-large;
     font-family: var(--font-family);
 }
 
@@ -30,34 +30,48 @@ body {
 
 .game_area {
     position: relative;
-    background-color: var(--main-bg-color);
+    background:linear-gradient(to bottom left, #56ab2f, #a8e063);
     box-sizing: border-box;
-    border-radius: 35%;
+    border-radius: 40%;
     width: 90%;
     height: 65vh;
     max-height: 830px;
     max-width: 830px;
     margin: 0 auto;
     border-width: 5rem;
+    padding-top: 125px;
+
 }
 
 .btn {
-    padding-top: 1.5rem;
-    border-radius: 77%;
+    
+    border-radius: 25%;
     background-color: white;
-    border: 1.5rem solid;
-    width: var(--btn-width);
-    height: var(--btn-height);
-    font-size: 1.9rem;
-    margin: 1rem;
+    border: 5px seagreen;
+    width: 10.5%;
+    height: 20.5%;
+    font-size: medium;
+    margin:1.5%;
     transition: all 0.5s;
     box-shadow: 10px 10px;
+    box-sizing: border-box;
+    display: inline-block;
 }
 
 .btn::after {
     content: attr(data-type);
     font-size: 1rem;
     position: relative;
+}
+
+.fas{
+    text-overflow: ellipsis;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .btn:active, .btn:hover {
@@ -76,13 +90,6 @@ body {
 
 /* --------- Media queries */
 
-@media only screen and (max-width: 780px) {
-    .game_area, .btn {
-        height: auto;
-        width: 80%;
-    }
-}
-
 @media only screen and (max-width: 375px) {
     .game_area, .btn {
         height: 55%;
@@ -98,6 +105,18 @@ body {
         width: 50%;
     }
 }
+
+@media only screen and (max-width: 780px) {
+    .game_area {
+        height: auto;
+        width: 90%;  /* Adjusted */
+    }
+    .btn {
+        height: auto;
+        width: 40%;  /* Adjusted */
+    }
+}
+
 
 /*--- Footer ---*/
 
