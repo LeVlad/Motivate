@@ -1,3 +1,4 @@
+
 # Motivate.me / Motivate 2.0
 
 A simple, motivational web app designed for positivity, mindset improvement, and daily encouragement.
@@ -16,7 +17,7 @@ It combines simplicity with a modern UI upgrade, including animated styling and 
 
 The application is fully responsive and works across desktop, tablet, and mobile devices.
 
-![MotivateResponsive](https://user-images.githubusercontent.com/88729876/145673031-340fa231-b612-4257-b402-266dcc439be5.jpeg)
+![MotivateResponsive](https://github.com/user-attachments/assets/a4645064-c25e-46e8-b07c-4986780c4d7a)
 
 ---
 
