@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motivate 3.0</title>
+
+<title>Motivate 2.0</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/images/favicon/favicon-16x16.png"/>
 
 <style>
 body {
@@ -17,7 +19,7 @@ body {
 
 /* HERO */
 .hero {
-  height: 50vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,204 +35,106 @@ body {
   100% {background-position:0%}
 }
 
-/* SECTIONS */
-.section {
-  padding: 20px;
-  text-align: center;
+.hero h1 {
+  font-size: 3rem;
 }
 
-/* BUTTONS */
-.grid {
+/* BUTTON GRID */
+.game_area {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
-  gap: 10px;
-  max-width: 600px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  padding: 30px;
+  max-width: 800px;
   margin: auto;
 }
 
 .btn {
   padding: 15px;
-  border-radius: 12px;
+  border-radius: 15px;
   border: none;
   background: rgba(255,255,255,0.08);
   color: white;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.btn.active {
+.btn:hover {
   background: #00f2fe;
   color: black;
+  transform: scale(1.05);
 }
 
-/* QUOTE */
+/* QUOTE BOX */
 .quote_box {
+  text-align: center;
   margin: 20px auto;
-  max-width: 600px;
   padding: 20px;
+  max-width: 600px;
   background: rgba(255,255,255,0.05);
   border-radius: 15px;
 }
 
-.quote {
-  font-size: 1.4rem;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: 0.3s;
+.random_quote {
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
-.quote.show {
-  opacity: 1;
-  transform: none;
+/* DESCRIPTION */
+.description {
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+  opacity: 0.8;
 }
 
-/* STREAK */
-.streak {
-  margin-top: 10px;
-  color: #00f2fe;
+/* FOOTER */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0.6;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <h1>Motivate</h1>
-  <p>Control your mindset daily</p>
-</div>
+<!-- HERO -->
+<section class="hero">
+  <h1>Motivate 2.0</h1>
+  <p>Choose your day. Get your mindset right.</p>
+</section>
 
-<div class="section">
-  <h2>Mood</h2>
-  <div class="grid" id="moods"></div>
-</div>
+<!-- ORIGINAL BUTTON SYSTEM (UNCHANGED) -->
+<section class="game_area">
+    <button data-day="Monday" class="btn">☕ Monday</button>
+    <button data-day="Tuesday" class="btn">💻 Tuesday</button>
+    <button data-day="Wednesday" class="btn">🏢 Wednesday</button>
+    <button data-day="Thursday" class="btn">🌐 Thursday</button>
+    <button data-day="Friday" class="btn">💻 Friday</button>
+    <button data-day="Saturday" class="btn">🍷 Saturday</button>
+    <button data-day="Sunday" class="btn">🍺 Sunday</button>
+</section>
 
-<div class="section">
-  <h2>Day</h2>
-  <div class="grid" id="days"></div>
-</div>
+<!-- DESCRIPTION -->
+<article class="description">
+  <h2>Instructions</h2>
+  <p id="instructions">
+    Select a day and reveal a message to improve your mindset.
+  </p>
+</article>
 
-<div class="quote_box">
-  <div class="quote" id="quote"></div>
-  <div class="streak" id="streak"></div>
-</div>
+<!-- IMPORTANT: KEEP THIS CLASS EXACTLY -->
+<aside class="quote_box">
+  <p class="random_quote"></p>
+</aside>
 
-<script>
+<!-- Scripts (UNCHANGED LOGIC) -->
+<script src="https://kit.fontawesome.com/394a00d2fc.js" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-/* STATE */
-const state = {
-  mood: localStorage.getItem("mood"),
-  day: localStorage.getItem("day"),
-  streak: Number(localStorage.getItem("streak") || 0),
-  lastVisit: localStorage.getItem("lastVisit")
-};
-
-/* DATA */
-const moods = ["focus","calm","confidence"];
-
-const days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-
-const quotes = {
-  focus: {
-    Monday: "Start focused. Block distractions.",
-    Tuesday: "Deep work beats shallow effort.",
-    Wednesday: "Halfway — stay locked in.",
-    Thursday: "Finish strong, no excuses.",
-    Friday: "Discipline > motivation.",
-    Saturday: "Sharpen your edge.",
-    Sunday: "Prepare with intent."
-  },
-  calm: {
-    Monday: "Breathe. You control the pace.",
-    Tuesday: "Let go of unnecessary stress.",
-    Wednesday: "Balance over chaos.",
-    Thursday: "Stay centered.",
-    Friday: "Relax — you made it.",
-    Saturday: "Slow down.",
-    Sunday: "Reset your mind."
-  },
-  confidence: {
-    Monday: "Own the week.",
-    Tuesday: "You are capable.",
-    Wednesday: "You’ve handled worse.",
-    Thursday: "Push your limits.",
-    Friday: "You earned this.",
-    Saturday: "Be bold.",
-    Sunday: "Trust yourself."
-  }
-};
-
-/* INIT UI */
-const moodContainer = document.getElementById("moods");
-const dayContainer = document.getElementById("days");
-
-moods.forEach(m => {
-  const btn = document.createElement("button");
-  btn.className = "btn";
-  btn.textContent = m;
-  btn.onclick = () => setMood(m);
-  moodContainer.appendChild(btn);
-});
-
-days.forEach(d => {
-  const btn = document.createElement("button");
-  btn.className = "btn";
-  btn.textContent = d;
-  btn.onclick = () => setDay(d);
-  dayContainer.appendChild(btn);
-});
-
-/* FUNCTIONS */
-function setMood(mood) {
-  state.mood = mood;
-  localStorage.setItem("mood", mood);
-  render();
-}
-
-function setDay(day) {
-  state.day = day;
-  localStorage.setItem("day", day);
-  render();
-}
-
-function updateStreak() {
-  const today = new Date().toDateString();
-
-  if (state.lastVisit !== today) {
-    state.streak++;
-    state.lastVisit = today;
-    localStorage.setItem("streak", state.streak);
-    localStorage.setItem("lastVisit", today);
-  }
-}
-
-function render() {
-
-  document.querySelectorAll("#moods .btn").forEach(btn => {
-    btn.classList.toggle("active", btn.textContent === state.mood);
-  });
-
-  document.querySelectorAll("#days .btn").forEach(btn => {
-    btn.classList.toggle("active", btn.textContent === state.day);
-  });
-
-  const quoteEl = document.getElementById("quote");
-
-  if (state.mood && state.day) {
-    quoteEl.classList.remove("show");
-    setTimeout(() => {
-      quoteEl.textContent = quotes[state.mood][state.day];
-      quoteEl.classList.add("show");
-    }, 100);
-  }
-
-  document.getElementById("streak").textContent =
-    `🔥 Streak: ${state.streak} days`;
-}
-
-/* START */
-updateStreak();
-render();
-
-</script>
+<!-- YOUR ORIGINAL JS -->
+<script src="assets/js/script.js"></script>
 
 </body>
 </html>
