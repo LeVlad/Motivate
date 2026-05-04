@@ -3,147 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motivate</title>
+
+<title>Motivate 2.0</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/images/favicon/favicon-16x16.png"/>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #111;
+  font-family: 'Inter', sans-serif;
+  background: #0f0f1a;
   color: white;
-  text-align: center;
 }
 
-button {
-  padding: 10px 15px;
-  margin: 5px;
-  cursor: pointer;
-}
-
-.mood.active {
-  background: cyan;
-  color: black;
-}
-
-.cards {
+/* HERO */
+.hero {
+  height: 60vh;
   display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(270deg, #4facfe, #00f2fe, #7f00ff);
+  background-size: 600% 600%;
+  animation: gradientMove 10s ease infinite;
 }
 
-.card {
-  min-width: 200px;
-  background: #222;
-  padding: 10px;
+@keyframes gradientMove {
+  0% {background-position:0%}
+  50% {background-position:100%}
+  100% {background-position:0%}
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+/* BUTTON GRID */
+.game_area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  padding: 30px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.btn {
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #00f2fe;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* QUOTE BOX */
+.quote_box {
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+}
+
+.random_quote {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* DESCRIPTION */
+.description {
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+  opacity: 0.8;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0.6;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Motivate</h1>
+<!-- HERO -->
+<section class="hero">
+  <h1>Motivate 2.0</h1>
+  <p>Choose your day. Get your mindset right.</p>
+</section>
 
-<!-- MOODS -->
-<div>
-  <button class="mood" data-mood="focus">Focus</button>
-  <button class="mood" data-mood="calm">Calm</button>
-  <button class="mood" data-mood="confidence">Confidence</button>
-</div>
+<!-- ORIGINAL BUTTON SYSTEM (UNCHANGED) -->
+<section class="game_area">
+    <button data-day="Monday" class="btn">☕ Monday</button>
+    <button data-day="Tuesday" class="btn">💻 Tuesday</button>
+    <button data-day="Wednesday" class="btn">🏢 Wednesday</button>
+    <button data-day="Thursday" class="btn">🌐 Thursday</button>
+    <button data-day="Friday" class="btn">💻 Friday</button>
+    <button data-day="Saturday" class="btn">🍷 Saturday</button>
+    <button data-day="Sunday" class="btn">🍺 Sunday</button>
+</section>
 
-<!-- DAYS -->
-<div>
-  <button class="day" data-day="Monday">Mon</button>
-  <button class="day" data-day="Tuesday">Tue</button>
-  <button class="day" data-day="Wednesday">Wed</button>
-</div>
+<!-- DESCRIPTION -->
+<article class="description">
+  <h2>Instructions</h2>
+  <p id="instructions">
+    Select a day and reveal a message to improve your mindset.
+  </p>
+</article>
 
-<!-- QUOTES -->
-<p id="dailyQuote"></p>
-<p id="dayQuote"></p>
-<p id="streak"></p>
+<!-- IMPORTANT: KEEP THIS CLASS EXACTLY -->
+<aside class="quote_box">
+  <p class="random_quote"></p>
+</aside>
 
-<!-- CARDS -->
-<div class="cards" id="cards"></div>
+<!-- Scripts (UNCHANGED LOGIC) -->
+<script src="https://kit.fontawesome.com/394a00d2fc.js" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-
-/* DATA */
-const content = {
-  focus: ["Deep Work", "No Distractions"],
-  calm: ["Relax", "Breathe"],
-  confidence: ["Believe", "Win"]
-};
-
-const dailyQuotes = ["Push.", "Discipline.", "Consistency."];
-const dayQuotes = {
-  Monday: "Start strong",
-  Tuesday: "Keep going",
-  Wednesday: "Halfway there"
-};
-
-/* FUNCTIONS */
-function loadDailyQuote() {
-  const i = new Date().getDate() % dailyQuotes.length;
-  document.getElementById("dailyQuote").textContent = dailyQuotes[i];
-}
-
-function updateStreak() {
-  let streak = Number(localStorage.getItem("streak") || 0);
-  let last = localStorage.getItem("last");
-
-  const today = new Date().toDateString();
-
-  if (last !== today) {
-    streak++;
-    localStorage.setItem("streak", streak);
-    localStorage.setItem("last", today);
-  }
-
-  document.getElementById("streak").textContent = "Streak: " + streak;
-}
-
-function renderCards(mood) {
-  const el = document.getElementById("cards");
-  el.innerHTML = "";
-
-  content[mood].forEach(item => {
-    const div = document.createElement("div");
-    div.className = "card";
-    div.textContent = item;
-    el.appendChild(div);
-  });
-}
-
-/* EVENTS */
-document.querySelectorAll(".mood").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".mood").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    const mood = btn.dataset.mood;
-    localStorage.setItem("mood", mood);
-    renderCards(mood);
-  });
-});
-
-document.querySelectorAll(".day").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.getElementById("dayQuote").textContent =
-      dayQuotes[btn.dataset.day];
-  });
-});
-
-/* INIT */
-loadDailyQuote();
-updateStreak();
-
-const saved = localStorage.getItem("mood");
-if (saved && content[saved]) {
-  renderCards(saved);
-}
-
-</script>
+<!-- YOUR ORIGINAL JS -->
+<script src="assets/js/script.js"></script>
 
 </body>
 </html>
