@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Motivate 2.0</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -35,29 +34,17 @@ body {
   100% {background-position:0%}
 }
 
-.hero h1 {
-  font-size: 3rem;
-}
-
 .hero button {
   padding: 12px 24px;
-  margin-top: 20px;
-  border: none;
   border-radius: 30px;
-  background: white;
-  color: black;
+  border: none;
   cursor: pointer;
 }
 
-.hero button:active {
-  transform: scale(0.95);
-}
-
-/* SECTION TITLE */
+/* SECTIONS */
 .section-title {
   text-align: center;
   margin-top: 40px;
-  font-size: 1.8rem;
 }
 
 /* MOODS */
@@ -78,16 +65,14 @@ body {
 .mood.active {
   background: #00f2fe;
   color: black;
-  transform: scale(1.05);
 }
 
-/* DAY SELECTOR */
+/* DAYS */
 .days {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 20px;
 }
 
 .day-btn {
@@ -99,28 +84,28 @@ body {
   color: white;
 }
 
-.day-btn:hover {
-  background: #7f00ff;
-}
-
 /* DAILY */
 .daily {
   text-align: center;
-  background: rgba(255,255,255,0.05);
   margin: 30px auto;
-  padding: 25px;
-  border-radius: 20px;
+  padding: 20px;
   max-width: 600px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
 }
 
-#quote {
-  font-size: 1.3rem;
+#dailyQuote {
   font-weight: 600;
 }
 
-.streak {
-  color: #00f2fe;
+#dayQuote {
   margin-top: 10px;
+  opacity: 0.8;
+}
+
+.streak {
+  margin-top: 10px;
+  color: #00f2fe;
 }
 
 /* CARDS */
@@ -129,149 +114,87 @@ body {
   overflow-x: auto;
   gap: 20px;
   padding: 20px;
-  scroll-snap-type: x mandatory;
 }
 
 .card {
   min-width: 250px;
   background: rgba(255,255,255,0.05);
-  border-radius: 15px;
   padding: 15px;
+  border-radius: 10px;
   cursor: pointer;
-  position: relative;
-  scroll-snap-align: start;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-}
-
-.card::after {
-  content: "▶";
-  position: absolute;
-  right: 15px;
-  bottom: 15px;
-  opacity: 0.6;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  opacity: 0.6;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <h1>Motivate 2.0</h1>
-  <p>Focus your mind. Control your day.</p>
-  <button onclick="scrollToSection()">Start</button>
+  <button id="startBtn">Start</button>
 </section>
 
-<!-- MOODS -->
-<h2 class="section-title">Choose Your Mood</h2>
-<section class="moods" id="moods">
-  <div class="mood" onclick="selectMood(event,'focus')">🔥 Focus</div>
-  <div class="mood" onclick="selectMood(event,'calm')">😌 Calm</div>
-  <div class="mood" onclick="selectMood(event,'confidence')">💪 Confidence</div>
+<h2 class="section-title">Mood</h2>
+<section class="moods">
+  <div class="mood" data-mood="focus">🔥 Focus</div>
+  <div class="mood" data-mood="calm">😌 Calm</div>
+  <div class="mood" data-mood="confidence">💪 Confidence</div>
 </section>
 
-<!-- DAYS -->
-<h2 class="section-title">Pick Your Day</h2>
+<h2 class="section-title">Day</h2>
 <section class="days">
-  <button class="day-btn" onclick="getDayQuote('Monday')">Monday</button>
-  <button class="day-btn" onclick="getDayQuote('Tuesday')">Tuesday</button>
-  <button class="day-btn" onclick="getDayQuote('Wednesday')">Wednesday</button>
-  <button class="day-btn" onclick="getDayQuote('Thursday')">Thursday</button>
-  <button class="day-btn" onclick="getDayQuote('Friday')">Friday</button>
-  <button class="day-btn" onclick="getDayQuote('Saturday')">Saturday</button>
-  <button class="day-btn" onclick="getDayQuote('Sunday')">Sunday</button>
+  <button class="day-btn" data-day="Monday">Mon</button>
+  <button class="day-btn" data-day="Tuesday">Tue</button>
+  <button class="day-btn" data-day="Wednesday">Wed</button>
+  <button class="day-btn" data-day="Thursday">Thu</button>
+  <button class="day-btn" data-day="Friday">Fri</button>
+  <button class="day-btn" data-day="Saturday">Sat</button>
+  <button class="day-btn" data-day="Sunday">Sun</button>
 </section>
 
-<!-- DAILY -->
 <section class="daily">
-  <h2>Today's Motivation</h2>
-  <p id="quote"></p>
+  <p id="dailyQuote"></p>
+  <p id="dayQuote"></p>
   <p class="streak" id="streak"></p>
 </section>
 
-<!-- CONTENT -->
 <section class="cards" id="cards"></section>
-
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2026 Motivate.me</p>
-</footer>
 
 <script>
 
-/* SCROLL */
-function scrollToSection() {
-  document.getElementById('moods').scrollIntoView({behavior: 'smooth'});
-}
-
-/* CONTENT */
+/* DATA */
 const content = {
   focus: ["Deep Work", "No Distractions", "Study Discipline"],
   calm: ["Let Go", "Peaceful Mind", "Reset"],
   confidence: ["Believe", "Win Today", "No Fear"]
 };
 
-/* SELECT MOOD */
-function selectMood(event, mood) {
-  document.querySelectorAll('.mood').forEach(m => m.classList.remove('active'));
-  event.target.classList.add('active');
-
-  const container = document.getElementById('cards');
-  container.innerHTML = "";
-
-  content[mood].forEach(item => {
-    const div = document.createElement('div');
-    div.className = "card";
-    div.innerHTML = `<h3>${item}</h3><p>2 min watch</p>`;
-    container.appendChild(div);
-  });
-
-  localStorage.setItem("lastMood", mood);
-}
-
-/* DAY QUOTES */
-const dayQuotes = {
-  Monday: "Start strong. Set the tone.",
-  Tuesday: "Build momentum.",
-  Wednesday: "Push through the middle.",
-  Thursday: "Almost there. Stay sharp.",
-  Friday: "Finish strong.",
-  Saturday: "Recharge and grow.",
-  Sunday: "Reflect and prepare."
-};
-
-function getDayQuote(day) {
-  document.getElementById('quote').innerText = dayQuotes[day];
-}
-
-/* DAILY RANDOM */
-const quotes = [
+const dailyQuotes = [
   "Push yourself.",
-  "Small steps daily.",
+  "Stay consistent.",
   "Discipline wins.",
-  "Stay consistent."
+  "Small steps daily."
 ];
 
-function loadQuote() {
+const dayQuotes = {
+  Monday: "Start strong.",
+  Tuesday: "Build momentum.",
+  Wednesday: "Push through.",
+  Thursday: "Stay sharp.",
+  Friday: "Finish strong.",
+  Saturday: "Recharge.",
+  Sunday: "Reflect."
+};
+
+/* FUNCTIONS */
+function loadDailyQuote() {
   const today = new Date().getDate();
-  document.getElementById('quote').innerText = quotes[today % quotes.length];
+  document.getElementById("dailyQuote").textContent =
+    dailyQuotes[today % dailyQuotes.length];
 }
 
-/* STREAK */
 function updateStreak() {
-  let streak = localStorage.getItem("streak") || 0;
+  let streak = parseInt(localStorage.getItem("streak") || "0");
   let lastVisit = localStorage.getItem("lastVisit");
-
   const today = new Date().toDateString();
 
   if (lastVisit !== today) {
@@ -280,16 +203,56 @@ function updateStreak() {
     localStorage.setItem("lastVisit", today);
   }
 
-  document.getElementById("streak").innerText = "🔥 Streak: " + streak + " days";
+  document.getElementById("streak").textContent =
+    `🔥 Streak: ${streak} days`;
 }
 
+function renderCards(mood) {
+  const container = document.getElementById("cards");
+  container.innerHTML = "";
+
+  content[mood].forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `<h3>${item}</h3><p>2 min watch</p>`;
+    container.appendChild(card);
+  });
+}
+
+/* EVENTS */
+document.getElementById("startBtn").addEventListener("click", () => {
+  document.querySelector(".moods").scrollIntoView({ behavior: "smooth" });
+});
+
+document.querySelectorAll(".mood").forEach(el => {
+  el.addEventListener("click", () => {
+    document.querySelectorAll(".mood").forEach(m => m.classList.remove("active"));
+    el.classList.add("active");
+
+    const mood = el.dataset.mood;
+    localStorage.setItem("lastMood", mood);
+    renderCards(mood);
+  });
+});
+
+document.querySelectorAll(".day-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const day = btn.dataset.day;
+    document.getElementById("dayQuote").textContent = dayQuotes[day];
+  });
+});
+
 /* INIT */
-loadQuote();
+loadDailyQuote();
 updateStreak();
 
-const lastMood = localStorage.getItem("lastMood");
-if (lastMood) {
-  selectMood({target: document.querySelector(`[onclick*="${lastMood}"]`)}, lastMood);
+const savedMood = localStorage.getItem("lastMood");
+if (savedMood && content[savedMood]) {
+  const el = document.querySelector(`[data-mood="${savedMood}"]`);
+  if (el) {
+    el.classList.add("active");
+    renderCards(savedMood);
+  }
 }
 
 </script>
