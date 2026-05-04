@@ -1,70 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" type="image/png" href="assets/images/favicon/favicon-16x16.png"/>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motivate 2.0</title>
 
-    <meta name="description" content="Motivate.me - Get a motivational quote based on your day of the week.">
-    <title>Motivate</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0f0f1a;
+  color: white;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(270deg, #4facfe, #00f2fe, #7f00ff);
+  background-size: 600% 600%;
+  animation: gradientMove 10s ease infinite;
+  text-align: center;
+}
+
+@keyframes gradientMove {
+  0% {background-position:0%}
+  50% {background-position:100%}
+  100% {background-position:0%}
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero button {
+  padding: 12px 24px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  transform: scale(1.1);
+}
+
+/* MOOD SELECTOR */
+.moods {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.mood {
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.mood:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* CONTENT */
+.content {
+  padding: 20px;
+}
+
+.cards {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+}
+
+.card {
+  min-width: 250px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 15px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* DAILY */
+.daily {
+  text-align: center;
+  margin: 40px;
+}
+
+.streak {
+  font-size: 1.2rem;
+  color: #00f2fe;
+}
+
+</style>
 </head>
+
 <body>
-    <h1 class="heading">Motivate.me</h1>
 
-    <section class="game_area">
-        <button data-day="Monday" class="btn btn-monday">
-            <i class="fas fa-coffee" aria-label="Monday Coffee">Monday</i> 
-        </button>
-        <button data-day="Tuesday" class="btn btn-tuesday">
-            <i class="fas fa-laptop-house" aria-label="Tuesday Laptop">Tuesday</i> 
-        </button>
-        <button data-day="Wednesday" class="btn btn-wednesday">
-            <i class="fas fa-building" aria-label="Wednesday Building">Wednesday</i> 
-        </button>
-        <button data-day="Thursday" class="btn btn-thursday">
-            <i class="fas fa-network-wired" aria-label="Thursday Network">Thursday</i> 
-        </button>
-        <button data-day="Friday" class="btn btn-friday">
-            <i class="fas fa-code-branch" aria-label="Friday Code">Friday</i> 
-        </button>
-        <button data-day="Saturday" class="btn btn-saturday">
-            <i class="fas fa-wine-bottle" aria-label="Saturday Wine">Saturday</i>
-        </button>
-        <button data-day="Sunday" class="btn btn-sunday">
-            <i class="fas fa-beer" aria-label="Sunday Beer">Sunday</i>
-        </button>
-    </section>
+<!-- HERO -->
+<section class="hero">
+  <h1>Change Your Life Today</h1>
+  <button onclick="scrollToMoods()">Start Now</button>
+</section>
 
-    <article class="description">
-        <h2>Instructions</h2>
-        <p id="instructions">Welcome to Motivate.me! Simply press the icons based on whatever day it is or whatever day you like and see what the hidden message is that can improve your day.</p>
-    </article>
+<!-- MOOD -->
+<section class="moods" id="moods">
+  <div class="mood" onclick="selectMood('focus')">🔥 Focus</div>
+  <div class="mood" onclick="selectMood('calm')">😌 Calm</div>
+  <div class="mood" onclick="selectMood('confidence')">💪 Confidence</div>
+</section>
 
-    <aside class="quote_box">
-        <p class="random_quote"></p>
-    </aside>
+<!-- DAILY -->
+<section class="daily">
+  <h2>Today's Motivation</h2>
+  <p id="quote"></p>
+  <p class="streak" id="streak"></p>
+</section>
 
-    <!-- Font Awesome Script -->
-    <script src="https://kit.fontawesome.com/394a00d2fc.js" crossorigin="anonymous" async></script>
-    <!-- SweetAlert2 JS -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-    <!-- Custom JS -->
-    <script src="assets/js/script.js" defer></script>
+<!-- CONTENT -->
+<section class="content">
+  <div class="cards" id="cards"></div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <p>
-            <a href="https://jigsaw.w3.org/css-validator/check/referer">
-                <img class="css-validator" src="https://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!" />
-            </a>
-        </p>
-        <p id="smile">
-            <i class="far fa-smile-wink"></i>
-        </p>
-        <p>&copy; 2026 Motivate.me Thanks Coffee Girl</p>
-    </footer>
+<script>
+
+/* SCROLL */
+function scrollToMoods() {
+  document.getElementById('moods').scrollIntoView({behavior: 'smooth'});
+}
+
+/* DATA */
+const content = {
+  focus: [
+    "Deep Work Motivation",
+    "No Distractions Mindset",
+    "Study With Discipline"
+  ],
+  calm: [
+    "Let Go of Stress",
+    "Peaceful Mind",
+    "Relax and Reset"
+  ],
+  confidence: [
+    "Believe in Yourself",
+    "Win the Day",
+    "No Fear Mentality"
+  ]
+};
+
+/* SELECT MOOD */
+function selectMood(mood) {
+  const container = document.getElementById('cards');
+  container.innerHTML = "";
+
+  content[mood].forEach(item => {
+    const div = document.createElement('div');
+    div.className = "card";
+    div.innerHTML = `<h3>${item}</h3><p>2 min watch</p>`;
+    container.appendChild(div);
+  });
+}
+
+/* DAILY QUOTES */
+const quotes = [
+  "Push yourself, because no one else will.",
+  "Small steps every day.",
+  "You are stronger than you think.",
+  "Discipline beats motivation."
+];
+
+function loadQuote() {
+  const today = new Date().getDate();
+  document.getElementById('quote').innerText = quotes[today % quotes.length];
+}
+
+/* STREAK SYSTEM */
+function updateStreak() {
+  let streak = localStorage.getItem("streak") || 0;
+  let lastVisit = localStorage.getItem("lastVisit");
+
+  const today = new Date().toDateString();
+
+  if (lastVisit !== today) {
+    streak++;
+    localStorage.setItem("streak", streak);
+    localStorage.setItem("lastVisit", today);
+  }
+
+  document.getElementById("streak").innerText = "🔥 Streak: " + streak + " days";
+}
+
+/* INIT */
+loadQuote();
+updateStreak();
+
+</script>
+
 </body>
 </html>
