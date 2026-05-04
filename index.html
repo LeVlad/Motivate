@@ -3,242 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motivate 2.0</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Motivate</title>
 
 <style>
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #0f0f1a;
+  font-family: Arial, sans-serif;
+  background: #111;
   color: white;
-}
-
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(270deg, #4facfe, #00f2fe, #7f00ff);
-  background-size: 600% 600%;
-  animation: gradientMove 10s ease infinite;
   text-align: center;
 }
 
-@keyframes gradientMove {
-  0% {background-position:0%}
-  50% {background-position:100%}
-  100% {background-position:0%}
-}
-
-.hero button {
-  padding: 12px 24px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-}
-
-/* SECTIONS */
-.section-title {
-  text-align: center;
-  margin-top: 40px;
-}
-
-/* MOODS */
-.moods {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-}
-
-.mood {
-  padding: 20px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.05);
+button {
+  padding: 10px 15px;
+  margin: 5px;
   cursor: pointer;
 }
 
 .mood.active {
-  background: #00f2fe;
+  background: cyan;
   color: black;
 }
 
-/* DAYS */
-.days {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.day-btn {
-  padding: 10px 15px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  background: rgba(255,255,255,0.1);
-  color: white;
-}
-
-/* DAILY */
-.daily {
-  text-align: center;
-  margin: 30px auto;
-  padding: 20px;
-  max-width: 600px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-}
-
-#dailyQuote {
-  font-weight: 600;
-}
-
-#dayQuote {
-  margin-top: 10px;
-  opacity: 0.8;
-}
-
-.streak {
-  margin-top: 10px;
-  color: #00f2fe;
-}
-
-/* CARDS */
 .cards {
   display: flex;
+  gap: 10px;
   overflow-x: auto;
-  gap: 20px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .card {
-  min-width: 250px;
-  background: rgba(255,255,255,0.05);
-  padding: 15px;
-  border-radius: 10px;
-  cursor: pointer;
+  min-width: 200px;
+  background: #222;
+  padding: 10px;
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
-  <h1>Motivate 2.0</h1>
-  <button id="startBtn">Start</button>
-</section>
+<h1>Motivate</h1>
 
-<h2 class="section-title">Mood</h2>
-<section class="moods">
-  <div class="mood" data-mood="focus">🔥 Focus</div>
-  <div class="mood" data-mood="calm">😌 Calm</div>
-  <div class="mood" data-mood="confidence">💪 Confidence</div>
-</section>
+<!-- MOODS -->
+<div>
+  <button class="mood" data-mood="focus">Focus</button>
+  <button class="mood" data-mood="calm">Calm</button>
+  <button class="mood" data-mood="confidence">Confidence</button>
+</div>
 
-<h2 class="section-title">Day</h2>
-<section class="days">
-  <button class="day-btn" data-day="Monday">Mon</button>
-  <button class="day-btn" data-day="Tuesday">Tue</button>
-  <button class="day-btn" data-day="Wednesday">Wed</button>
-  <button class="day-btn" data-day="Thursday">Thu</button>
-  <button class="day-btn" data-day="Friday">Fri</button>
-  <button class="day-btn" data-day="Saturday">Sat</button>
-  <button class="day-btn" data-day="Sunday">Sun</button>
-</section>
+<!-- DAYS -->
+<div>
+  <button class="day" data-day="Monday">Mon</button>
+  <button class="day" data-day="Tuesday">Tue</button>
+  <button class="day" data-day="Wednesday">Wed</button>
+</div>
 
-<section class="daily">
-  <p id="dailyQuote"></p>
-  <p id="dayQuote"></p>
-  <p class="streak" id="streak"></p>
-</section>
+<!-- QUOTES -->
+<p id="dailyQuote"></p>
+<p id="dayQuote"></p>
+<p id="streak"></p>
 
-<section class="cards" id="cards"></section>
+<!-- CARDS -->
+<div class="cards" id="cards"></div>
 
 <script>
 
 /* DATA */
 const content = {
-  focus: ["Deep Work", "No Distractions", "Study Discipline"],
-  calm: ["Let Go", "Peaceful Mind", "Reset"],
-  confidence: ["Believe", "Win Today", "No Fear"]
+  focus: ["Deep Work", "No Distractions"],
+  calm: ["Relax", "Breathe"],
+  confidence: ["Believe", "Win"]
 };
 
-const dailyQuotes = [
-  "Push yourself.",
-  "Stay consistent.",
-  "Discipline wins.",
-  "Small steps daily."
-];
-
+const dailyQuotes = ["Push.", "Discipline.", "Consistency."];
 const dayQuotes = {
-  Monday: "Start strong.",
-  Tuesday: "Build momentum.",
-  Wednesday: "Push through.",
-  Thursday: "Stay sharp.",
-  Friday: "Finish strong.",
-  Saturday: "Recharge.",
-  Sunday: "Reflect."
+  Monday: "Start strong",
+  Tuesday: "Keep going",
+  Wednesday: "Halfway there"
 };
 
 /* FUNCTIONS */
 function loadDailyQuote() {
-  const today = new Date().getDate();
-  document.getElementById("dailyQuote").textContent =
-    dailyQuotes[today % dailyQuotes.length];
+  const i = new Date().getDate() % dailyQuotes.length;
+  document.getElementById("dailyQuote").textContent = dailyQuotes[i];
 }
 
 function updateStreak() {
-  let streak = parseInt(localStorage.getItem("streak") || "0");
-  let lastVisit = localStorage.getItem("lastVisit");
+  let streak = Number(localStorage.getItem("streak") || 0);
+  let last = localStorage.getItem("last");
+
   const today = new Date().toDateString();
 
-  if (lastVisit !== today) {
+  if (last !== today) {
     streak++;
     localStorage.setItem("streak", streak);
-    localStorage.setItem("lastVisit", today);
+    localStorage.setItem("last", today);
   }
 
-  document.getElementById("streak").textContent =
-    `🔥 Streak: ${streak} days`;
+  document.getElementById("streak").textContent = "Streak: " + streak;
 }
 
 function renderCards(mood) {
-  const container = document.getElementById("cards");
-  container.innerHTML = "";
+  const el = document.getElementById("cards");
+  el.innerHTML = "";
 
   content[mood].forEach(item => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `<h3>${item}</h3><p>2 min watch</p>`;
-    container.appendChild(card);
+    const div = document.createElement("div");
+    div.className = "card";
+    div.textContent = item;
+    el.appendChild(div);
   });
 }
 
 /* EVENTS */
-document.getElementById("startBtn").addEventListener("click", () => {
-  document.querySelector(".moods").scrollIntoView({ behavior: "smooth" });
-});
+document.querySelectorAll(".mood").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".mood").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
 
-document.querySelectorAll(".mood").forEach(el => {
-  el.addEventListener("click", () => {
-    document.querySelectorAll(".mood").forEach(m => m.classList.remove("active"));
-    el.classList.add("active");
-
-    const mood = el.dataset.mood;
-    localStorage.setItem("lastMood", mood);
+    const mood = btn.dataset.mood;
+    localStorage.setItem("mood", mood);
     renderCards(mood);
   });
 });
 
-document.querySelectorAll(".day-btn").forEach(btn => {
+document.querySelectorAll(".day").forEach(btn => {
   btn.addEventListener("click", () => {
-    const day = btn.dataset.day;
-    document.getElementById("dayQuote").textContent = dayQuotes[day];
+    document.getElementById("dayQuote").textContent =
+      dayQuotes[btn.dataset.day];
   });
 });
 
@@ -246,13 +138,9 @@ document.querySelectorAll(".day-btn").forEach(btn => {
 loadDailyQuote();
 updateStreak();
 
-const savedMood = localStorage.getItem("lastMood");
-if (savedMood && content[savedMood]) {
-  const el = document.querySelector(`[data-mood="${savedMood}"]`);
-  if (el) {
-    el.classList.add("active");
-    renderCards(savedMood);
-  }
+const saved = localStorage.getItem("mood");
+if (saved && content[saved]) {
+  renderCards(saved);
 }
 
 </script>
