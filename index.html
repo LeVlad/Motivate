@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Motivate 2.0</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -46,19 +47,25 @@ body {
   background: white;
   color: black;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.hero button:hover {
-  transform: scale(1.1);
+.hero button:active {
+  transform: scale(0.95);
 }
 
-/* MOOD SELECTOR */
+/* SECTION TITLE */
+.section-title {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.8rem;
+}
+
+/* MOODS */
 .moods {
   display: flex;
   justify-content: center;
   gap: 20px;
-  padding: 40px;
+  padding: 20px;
 }
 
 .mood {
@@ -66,22 +73,63 @@ body {
   border-radius: 15px;
   background: rgba(255,255,255,0.05);
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.mood:hover {
-  background: rgba(255,255,255,0.15);
+.mood.active {
+  background: #00f2fe;
+  color: black;
+  transform: scale(1.05);
 }
 
-/* CONTENT */
-.content {
+/* DAY SELECTOR */
+.days {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
   padding: 20px;
 }
 
+.day-btn {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.day-btn:hover {
+  background: #7f00ff;
+}
+
+/* DAILY */
+.daily {
+  text-align: center;
+  background: rgba(255,255,255,0.05);
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 600px;
+}
+
+#quote {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.streak {
+  color: #00f2fe;
+  margin-top: 10px;
+}
+
+/* CARDS */
 .cards {
   display: flex;
   overflow-x: auto;
   gap: 20px;
+  padding: 20px;
+  scroll-snap-type: x mandatory;
 }
 
 .card {
@@ -89,24 +137,29 @@ body {
   background: rgba(255,255,255,0.05);
   border-radius: 15px;
   padding: 15px;
-  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+  scroll-snap-align: start;
 }
 
 .card:hover {
   transform: translateY(-10px);
 }
 
-/* DAILY */
-.daily {
+.card::after {
+  content: "▶";
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  opacity: 0.6;
+}
+
+/* FOOTER */
+footer {
   text-align: center;
-  margin: 40px;
+  padding: 20px;
+  opacity: 0.6;
 }
-
-.streak {
-  font-size: 1.2rem;
-  color: #00f2fe;
-}
-
 </style>
 </head>
 
@@ -114,15 +167,29 @@ body {
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Change Your Life Today</h1>
-  <button onclick="scrollToMoods()">Start Now</button>
+  <h1>Motivate 2.0</h1>
+  <p>Focus your mind. Control your day.</p>
+  <button onclick="scrollToSection()">Start</button>
 </section>
 
-<!-- MOOD -->
+<!-- MOODS -->
+<h2 class="section-title">Choose Your Mood</h2>
 <section class="moods" id="moods">
-  <div class="mood" onclick="selectMood('focus')">🔥 Focus</div>
-  <div class="mood" onclick="selectMood('calm')">😌 Calm</div>
-  <div class="mood" onclick="selectMood('confidence')">💪 Confidence</div>
+  <div class="mood" onclick="selectMood(event,'focus')">🔥 Focus</div>
+  <div class="mood" onclick="selectMood(event,'calm')">😌 Calm</div>
+  <div class="mood" onclick="selectMood(event,'confidence')">💪 Confidence</div>
+</section>
+
+<!-- DAYS -->
+<h2 class="section-title">Pick Your Day</h2>
+<section class="days">
+  <button class="day-btn" onclick="getDayQuote('Monday')">Monday</button>
+  <button class="day-btn" onclick="getDayQuote('Tuesday')">Tuesday</button>
+  <button class="day-btn" onclick="getDayQuote('Wednesday')">Wednesday</button>
+  <button class="day-btn" onclick="getDayQuote('Thursday')">Thursday</button>
+  <button class="day-btn" onclick="getDayQuote('Friday')">Friday</button>
+  <button class="day-btn" onclick="getDayQuote('Saturday')">Saturday</button>
+  <button class="day-btn" onclick="getDayQuote('Sunday')">Sunday</button>
 </section>
 
 <!-- DAILY -->
@@ -133,38 +200,32 @@ body {
 </section>
 
 <!-- CONTENT -->
-<section class="content">
-  <div class="cards" id="cards"></div>
-</section>
+<section class="cards" id="cards"></section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Motivate.me</p>
+</footer>
 
 <script>
 
 /* SCROLL */
-function scrollToMoods() {
+function scrollToSection() {
   document.getElementById('moods').scrollIntoView({behavior: 'smooth'});
 }
 
-/* DATA */
+/* CONTENT */
 const content = {
-  focus: [
-    "Deep Work Motivation",
-    "No Distractions Mindset",
-    "Study With Discipline"
-  ],
-  calm: [
-    "Let Go of Stress",
-    "Peaceful Mind",
-    "Relax and Reset"
-  ],
-  confidence: [
-    "Believe in Yourself",
-    "Win the Day",
-    "No Fear Mentality"
-  ]
+  focus: ["Deep Work", "No Distractions", "Study Discipline"],
+  calm: ["Let Go", "Peaceful Mind", "Reset"],
+  confidence: ["Believe", "Win Today", "No Fear"]
 };
 
 /* SELECT MOOD */
-function selectMood(mood) {
+function selectMood(event, mood) {
+  document.querySelectorAll('.mood').forEach(m => m.classList.remove('active'));
+  event.target.classList.add('active');
+
   const container = document.getElementById('cards');
   container.innerHTML = "";
 
@@ -174,14 +235,31 @@ function selectMood(mood) {
     div.innerHTML = `<h3>${item}</h3><p>2 min watch</p>`;
     container.appendChild(div);
   });
+
+  localStorage.setItem("lastMood", mood);
 }
 
-/* DAILY QUOTES */
+/* DAY QUOTES */
+const dayQuotes = {
+  Monday: "Start strong. Set the tone.",
+  Tuesday: "Build momentum.",
+  Wednesday: "Push through the middle.",
+  Thursday: "Almost there. Stay sharp.",
+  Friday: "Finish strong.",
+  Saturday: "Recharge and grow.",
+  Sunday: "Reflect and prepare."
+};
+
+function getDayQuote(day) {
+  document.getElementById('quote').innerText = dayQuotes[day];
+}
+
+/* DAILY RANDOM */
 const quotes = [
-  "Push yourself, because no one else will.",
-  "Small steps every day.",
-  "You are stronger than you think.",
-  "Discipline beats motivation."
+  "Push yourself.",
+  "Small steps daily.",
+  "Discipline wins.",
+  "Stay consistent."
 ];
 
 function loadQuote() {
@@ -189,7 +267,7 @@ function loadQuote() {
   document.getElementById('quote').innerText = quotes[today % quotes.length];
 }
 
-/* STREAK SYSTEM */
+/* STREAK */
 function updateStreak() {
   let streak = localStorage.getItem("streak") || 0;
   let lastVisit = localStorage.getItem("lastVisit");
@@ -208,6 +286,11 @@ function updateStreak() {
 /* INIT */
 loadQuote();
 updateStreak();
+
+const lastMood = localStorage.getItem("lastMood");
+if (lastMood) {
+  selectMood({target: document.querySelector(`[onclick*="${lastMood}"]`)}, lastMood);
+}
 
 </script>
 
